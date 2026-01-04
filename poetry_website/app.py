@@ -52,11 +52,18 @@ def about():
 def privacy():
     return render_template("privacy.html")
 
-from flask import send_from_directory
+from flask import Response
 
 @app.route("/sitemap.xml")
 def sitemap():
-    return send_from_directory("static", "sitemap.xml")
+    with open("static/sitemap.xml", "r") as f:
+        sitemap_xml = f.read()
+    return Response(sitemap_xml, mimetype="application/xml")
+
+@app.route("/robots.txt")
+def robots():
+    return send_from_directory("static", "robots.txt")
+
 
 if __name__ == "__main__":
     app.run(debug=True)
