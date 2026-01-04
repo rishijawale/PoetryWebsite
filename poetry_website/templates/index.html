@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Poem of the Day{% endblock %}
+{% block description %}Read today’s handpicked poem with emotion and depth.{% endblock %}
+
+{% block content %}
+
+<div class="ad-box">Advertisement</div>
+
+<div class="poem-box">
+    <p class="poem-text">{{ poem }}</p>
+    <p class="author">— {{ author }}</p>
+    <p class="tone">Tone: {{ tone }}</p>
+</div>
+
+<div class="ad-box">Advertisement</div>
+
+{% endblock %}

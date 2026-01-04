@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Browse Poems{% endblock %}
+{% block description %}Browse poems by emotion and tone.{% endblock %}
+
+{% block content %}
+
+<h2>Browse Poems</h2>
+
+<div class="tones">
+    <a href="/browse">All</a>
+    {% for t in tones %}
+        <a href="/browse?tone={{ t }}">{{ t }}</a>
+    {% endfor %}
+</div>
+
+<hr>
+
+{% for poem in poems %}
+    <div class="poem-card">
+        <p class="poem-text">{{ poem["poem content"] }}</p>
+        <p class="author">— {{ poem.get("author", "Unknown") }}</p>
+        <p class="tone">Tone: {{ poem["tone"] }}</p>
+    </div>
+
+    {% if loop.index % 3 == 0 %}
+        <div class="ad-box">Advertisement</div>
+    {% endif %}
+{% endfor %}
+
+{% endblock %}
+
